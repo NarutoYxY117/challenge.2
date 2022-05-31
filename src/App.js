@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Routes, Route, Link} from 'react-router-dom'
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import ProductList from './components/ProductList';
+
 
 function App() {
+  const list = [{
+    product : "Test",
+    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    poster : "images/test.png",
+    price : "50",
+  }]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/ProductList" element={<ProductList/>}/>
+      <Route path="*" element={<h1 style ={{paddingTop:"300px"}}>404 not found</h1>}/>
+    </Routes>
     </div>
   );
 }
